@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z&amp;J Industries | Premier Button Manufacturer in Karachi</title>
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary-color: #1a252f;
+            --secondary-color: #2c3e50;
+            --accent-color: #d35400;
+            --accent-hover: #e67e22;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --light-text: #ecf0f1;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section with <img> Tag */
+        .hero {
+            position: relative;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 7rem 5%;
+            overflow: hidden;
+        }
+
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.35;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            color: #ecf0f1;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: #ffffff;
+            color: var(--primary-color);
+        }
+
+        /* Section General Styling */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About & Stats */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-box {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .stat-box h4 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-box p {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Products Catalog */
+        .products {
+            background-color: var(--light-bg);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-icon {
+            height: 160px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 3rem;
+        }
+
+        /* CSS-drawn Button Graphics */
+        .btn-graphic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ecf0f1, #bdc3c7);
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.4), 0 4px 8px rgba(0,0,0,0.3);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            place-items: center;
+            padding: 22px;
+        }
+
+        .btn-graphic.metal {
+            background: radial-gradient(circle at 30% 30%, #f39c12, #b9770e);
+        }
+
+        .btn-graphic.horn {
+            background: radial-gradient(circle at 30% 30%, #6e2c00, #3e1800);
+        }
+
+        .btn-graphic.snap {
+            background: radial-gradient(circle at 30% 30%, #95a5a6, #34495e);
+            display: flex;
+        }
+
+        .hole {
+            width: 10px;
+            height: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            box-shadow: inset 0 2px 3px rgba(0,0,0,0.6);
+        }
+
+        .snap-center {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 3px solid #2c3e50;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .specs {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Capabilities / Process */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .process-step {
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        .step-num {
+            width: 45px;
+            height: 45px;
+            background-color: var(--accent-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem auto;
+        }
+
+        /* Contact & Quote Section */
+        .contact {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        .contact .section-title h2 {
+            color: #ffffff;
+        }
+
+        .contact .section-title p {
+            color: #bdc3c7;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            color: #ffffff;
+        }
+
+        .info-item span {
+            color: #bdc3c7;
+            font-size: 0.95rem;
+        }
+
+        .quote-form {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 6px;
+            color: var(--dark-text);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #11181f;
+            color: #7f8c8d;
+            text-align: center;
+            padding: 2rem 5%;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .about-grid, .contact-container, .form-row {
+                grid-template-columns: 1fr;
+            }
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Z&amp;J <span>INDUSTRIES</span></div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#capabilities">Capabilities</a></li>
+                <li><a href="#contact">Request Quote</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="banner.jfif" onerror="if(this.src.endsWith('banner.jpg')){this.src='banner.png';}else{this.style.display='none';}" alt="Z&amp;J Industries Button Manufacturing Banner" class="hero-bg-img">
+        <div class="hero-content">
+            <h1>Precision Garment Buttons Manufactured in Karachi</h1>
+            <p>Supplying Pakistan's leading textile mills, denim exporters, and fashion houses with high-durability polyester, metal, and custom-engraved buttons since 1998.</p>
+            <a href="#contact" class="btn">Request Bulk Quote</a>
+            <a href="#products" class="btn btn-outline">Explore Catalog</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-title">
+            <h2>Powering Karachi's Textile Export Industry</h2>
+            <p>Located in the heart of Karachi's industrial hub, we deliver fast turnarounds and export-grade quality.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Built for Industrial Scale &amp; Export Compliance</h3>
+                <p>At Z&amp;J Industries, we understand the strict timelines and quality standards required by global apparel buyers. Operating out of S.I.T.E. Industrial Area, Karachi, our facility combines high-speed Italian button-turning machinery with rigorous color-matching and durability testing.</p>
+                <p>Whether you need 500,000 dyed-to-match shirt buttons or custom laser-engraved brass shanks for heavy denim, we manufacture locally to eliminate your import delays.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h4>2M+</h4>
+                    <p>Daily Production Capacity</p>
+                </div>
+                <div class="stat-box">
+                    <h4>25+</h4>
+                    <p>Years in Karachi</p>
+                </div>
+                <div class="stat-box">
+                    <h4>OEKO-TEX</h4>
+                    <p>Standard 100 Compliant</p>
+                </div>
+                <div class="stat-box">
+                    <h4>48 Hrs</h4>
+                    <p>Sample Turnaround</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="section-title">
+            <h2>Our Button Categories</h2>
+            <p>Available in standard sizes from 14L to 60L with custom Pantone dyeing and laser engraving.</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-icon">
+                    <div class="btn-graphic">
+                        <div class="hole"></div><div class="hole"></div>
+                        <div class="hole"></div><div class="hole"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Polyester &amp; Chalk Buttons</h3>
+                    <p>High-gloss, matte, and pearl-finish buttons ideal for dress shirts, kurtas, and formal wear. Heat and chemical resistant.</p>
+                    <div class="specs">Sizes: 14L – 40L | 2-Hole &amp; 4-Hole</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">
+                    <div class="btn-graphic metal">
+                        <div class="hole"></div><div class="hole"></div>
+                        <div class="hole"></div><div class="hole"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Metal &amp; Denim Shanks</h3>
+                    <p>Rust-proof brass, zinc alloy, and stainless steel tack buttons and rivets engineered for heavy denim and workwear.</p>
+                    <div class="specs">Custom Embossing &amp; Electroplating</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">
+                    <div class="btn-graphic horn">
+                        <div class="hole"></div><div class="hole"></div>
+                        <div class="hole"></div><div class="hole"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Imitation Horn &amp; Wood</h3>
+                    <p>Rich, natural-grain resin buttons designed for suits, blazers, coats, and knitwear with superior wash durability.</p>
+                    <div class="specs">Sizes: 20L – 60L | Laser Rim Engraving</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">
+                    <div class="btn-graphic snap">
+                        <div class="snap-center"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Snap Fasteners &amp; Eyelets</h3>
+                    <p>Heavy-duty spring snaps, prong rings, and grommets for jackets, kidswear, sportswear, and leather goods.</p>
+                    <div class="specs">Nickel-Free &amp; Pull-Test Certified</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities">
+        <div class="section-title">
+            <h2>Manufacturing &amp; Quality Process</h2>
+            <p>End-to-end production under one roof in Karachi.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <h3>Spectrophotometer Dyeing</h3>
+                <p>Exact Pantone and fabric-swatch color matching with zero batch-to-batch variation.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <h3>CNC Turning &amp; Laser</h3>
+                <p>High-speed precision drilling, rim profiling, and custom brand logo laser engraving.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <h3>Lab &amp; Pull Testing</h3>
+                <p>Every batch undergoes wash-fastness, impact, needle-detection, and pull-strength checks.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">4</div>
+                <h3>Direct Karachi Dispatch</h3>
+                <p>Same-day delivery to S.I.T.E., Korangi, Landhi, and Port Qasim garment factories.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-title">
+            <h2>Request Samples or a Bulk Quote</h2>
+            <p>Send us your specifications or fabric swatch details for rapid pricing.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Factory &amp; Sales Office</h3>
+                <div class="info-item">
+                    <strong>Factory Address</strong>
+                    <span>Plot D-42, Manghopir Road, S.I.T.E. Industrial Area, Karachi, Pakistan</span>
+                </div>
+                <div class="info-item">
+                    <strong>Sales &amp; Export Desk</strong>
+                    <span>+92 (21) 3256-8900<br>+92 300-8245190 (WhatsApp Available)</span>
+                </div>
+                <div class="info-item">
+                    <strong>Email Inquiries</strong>
+                    <span>sales@zjindustries.pk</span>
+                </div>
+                <div class="info-item">
+                    <strong>Operating Hours</strong>
+                    <span>Monday – Saturday: 9:00 AM – 6:00 PM PKT</span>
+                </div>
+            </div>
+
+            <form class="quote-form" onsubmit="event.preventDefault(); alert('Thank you! Your inquiry has been received by Z&J Industries. Our Karachi sales desk will contact you within 4 business hours.');">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" placeholder="e.g. Tariq Mahmood" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company / Mill Name *</label>
+                        <input type="text" id="company" placeholder="e.g. Crescent Apparel Ltd." required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone / WhatsApp *</label>
+                        <input type="tel" id="phone" placeholder="+92 300 0000000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Button Type</label>
+                        <select id="category">
+                            <option value="polyester">Polyester / Shirt Buttons</option>
+                            <option value="metal">Metal / Denim Shanks &amp; Rivets</option>
+                            <option value="horn">Imitation Horn / Suit Buttons</option>
+                            <option value="snaps">Snap Fasteners / Eyelets</option>
+                            <option value="custom">Custom Engraved / Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="details">Order Specifications (Size in Ligne, Quantity in Gross, Color)</label>
+                    <textarea id="details" rows="4" placeholder="e.g. Need 5,000 gross of 18L 4-hole matte polyester buttons dyed to Pantone 19-4052..." required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Z&amp;J Industries (Pvt) Ltd. All Rights Reserved. | S.I.T.E. Industrial Area, Karachi, Pakistan.</p>
+    </footer>
+
+</body>
+</html>
